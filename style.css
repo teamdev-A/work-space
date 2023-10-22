@@ -1,0 +1,38 @@
+/* style.css */
+body {
+  background: linear-gradient(to bottom, #FF5733, #B5076B);
+  font-family: 'Helvetica', sans-serif;
+  color: #fff;
+  text-align: center;
+}
+
+#container {
+  margin: 0 auto;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+  font-size: 36px;
+  text-transform: uppercase;
+}
+
+p {
+  font-size: 18px;
+}
+
+button {
+  background: #4CAF50;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background: #45a049;
+}
