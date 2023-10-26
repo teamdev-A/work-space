@@ -1,38 +1,46 @@
-/* style.css */
-body {
-  background: linear-gradient(to bottom, #FF5733, #B5076B);
-  font-family: 'Helvetica', sans-serif;
-  color: #fff;
-  text-align: center;
+/* ボタンのスタイル */
+#start-button {
+  background-color: #4CAF50; /* ボタンの背景色 */
+  color: white; /* ボタンのテキスト色 */
+  border: none; /* ボタンのボーダーを削除 */
+  padding: 10px 20px; /* ボタンのパディング */
+  font-size: 18px; /* ボタンのフォントサイズ */
+  cursor: pointer; /* マウスカーソルをポインターに変更 */
+  border-radius: 5px; /* ボタンの角を丸くする */
+  transition: background-color 0.3s; /* ホバー時のアニメーション */
 }
 
+/* スタート画面のスタイル */
+#start-screen {
+  text-align: center; /* テキストを中央揃え */
+  margin-top: 100px; /* マージンを追加して位置を調整 */
+}
+
+/* ゲームコンテナのスタイル */
 #container {
-  margin: 0 auto;
+  max-width: 800px; /* コンテナの最大幅を指定 */
+  margin: 0 auto; /* コンテナを中央寄せ */
   padding: 20px;
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  background-color: #333; /* コンテナの背景色 */
 }
-
-h1 {
-  font-size: 36px;
-  text-transform: uppercase;
-}
-
-p {
-  font-size: 18px;
-}
-
-button {
-  background: #4CAF50;
+body {
+  background-color: #222; /* シンプルな背景色 */
   color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
+  font-family: Arial, sans-serif; /* フォント指定 */
+  margin: 0; /* ページのマージンを削除 */
+  padding: 0; /* ページのパディングを削除 */
+}
+/* タイトルのスタイル */
+/* テトリスのタイトルのスタイル */
+h1 {
+  font-family: 'Arial', sans-serif; /* フォント指定 */
+  font-size: 36px; /* フォントサイズ */
+  color: #007BFF; /* テキストの色 */
+  text-align: center; /* テキストを中央揃え */
+  text-shadow: 2px 2px 4px #000; /* テキストに影を付ける */
+  margin-top: 20px; /* マージンを追加 */
 }
 
-button:hover {
-  background: #45a049;
-}
+
+
+
