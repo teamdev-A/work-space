@@ -1,6 +1,6 @@
 class TetrisGame {
-  constructor() {
-    this.speed = 100;
+  constructor(speed) {
+    this.speed = speed;
     this.blockSize = 30;
     this.boardRow = 20;
     this.boardCol = 10;
@@ -247,10 +247,9 @@ class TetrisGame {
 }
 
 // ゲームを開始する関数
-function GameStart() {
-  const game = new TetrisGame();
+function GameStart(speed) {
+  const game = new TetrisGame(speed);
   document.addEventListener('keydown', (e) => game.onKeyPress(e));
 }
 
-// ページ読み込み時にゲームを開始
-window.onload = GameStart
+
