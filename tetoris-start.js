@@ -7,13 +7,13 @@ document.getElementById("start-button").addEventListener("click", function () {
 
   switch(difficulty.value) {
     case 'easy':
-      init(200);
+      GameStart(200);
       break;
     case 'normal':
-      init(150);
+      GameStart(150);
       break;
     case 'hard':
-      init(100);
+      GameStart(80);
       break;
   }
 });
