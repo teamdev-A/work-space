@@ -1,5 +1,5 @@
 //落下サイクル
-const speed = 100;
+// const speed = 100;
 // ブロック1マスの大きさ
 const blockSize = 30;
 // ボードサイズ
@@ -120,7 +120,7 @@ const draw = () => {
     ctx.fillStyle = 'white';
     ctx.fillText(s, x, y);
     init();
-     
+
   }
 
   //テトリミノの描画
@@ -207,7 +207,7 @@ const fixTet = () => {
       if (tet[y][x]) {
         //ボードに書き込む
         board[offsetY + y][offsetX + x] = tet_idx;
-        
+
       }
     }
   }
@@ -274,7 +274,7 @@ const randomIdx = () => {
 };
 
 // 初期化処理
-const init = () => {
+const init = (speed) => {
   //ボード(20*10を0埋め)
   for (let y = 0; y < boardRow; y++) {
     board[y] = [];

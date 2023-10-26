@@ -8,6 +8,11 @@
   cursor: pointer; /* マウスカーソルをポインターに変更 */
   border-radius: 5px; /* ボタンの角を丸くする */
   transition: background-color 0.3s; /* ホバー時のアニメーション */
+  margin-bottom: 10px;
+}
+
+#difficulty-selection {
+  margin-bottom: 10px;
 }
 
 /* スタート画面のスタイル */
