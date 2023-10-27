@@ -103,6 +103,8 @@ class TetrisGame {
       const y = this.canvasH / 2 - 20;
       this.ctx.fillStyle = 'white';
       this.ctx.fillText(s, x, y);
+	  document.getElementById("start-button").textContent = "Continue"; // ボタンのテキストを変更
+	  document.getElementById("start-screen").style.visibility = "visible"; // スタート画面を表示
       this.init();
     }
 
