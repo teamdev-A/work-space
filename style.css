@@ -18,7 +18,6 @@
 /* スタート画面のスタイル */
 #start-screen {
   text-align: center; /* テキストを中央揃え */
-  margin-top: 100px; /* マージンを追加して位置を調整 */
 }
 
 /* ゲームコンテナのスタイル */
@@ -27,7 +26,15 @@
   margin: 0 auto; /* コンテナを中央寄せ */
   padding: 20px;
   background-color: #333; /* コンテナの背景色 */
+  text-align: center;
 }
+
+#cvs {
+  height: 600px;
+  width: 300px;
+  background-color: black;
+}
+
 body {
   background-color: #222; /* シンプルな背景色 */
   color: #fff;
@@ -43,7 +50,7 @@ h1 {
   color: #007BFF; /* テキストの色 */
   text-align: center; /* テキストを中央揃え */
   text-shadow: 2px 2px 4px #000; /* テキストに影を付ける */
-  margin-top: 20px; /* マージンを追加 */
+  margin: 10px; /* マージンを追加 */
 }
 
 
