@@ -18,7 +18,7 @@
 /* スタート画面のスタイル */
 #start-screen {
   text-align: center; /* テキストを中央揃え */
-  margin-top: 100px; /* マージンを追加して位置を調整 */
+  /* margin-top: 100px; マージンを追加して位置を調整 */
 }
 
 /* ゲームコンテナのスタイル */
@@ -27,7 +27,15 @@
   margin: 0 auto; /* コンテナを中央寄せ */
   padding: 20px;
   background-color: #333; /* コンテナの背景色 */
+  text-align: center;
 }
+
+#cvs {
+  height: 600px;
+  width: 300px;
+  background-color: #000;
+}
+
 body {
   background-color: #222; /* シンプルな背景色 */
   color: #fff;
