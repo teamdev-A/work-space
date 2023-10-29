@@ -12,9 +12,13 @@ class TetrisGame {
     cvs.width = this.canvasW;
     cvs.height = this.canvasH;
     this.nexttetromino = document.getElementById("next");
+    this.nextCanvasSize = this.blockSize * 5;
+    this.nextCanvasW = this.nextCanvasSize;
+    this.nextCanvasH = this.nextCanvasSize;
+    this.nexttetromino.width = this.nextCanvasW;
+    this.nexttetromino.height = this.nextCanvasH;
     this.next = this.nexttetromino.getContext("2d");
-    this.nextCanvasW = this.blockSize * 20;
-    this.nextCanvasH = this.blockSize * 20;
+
     this.tetSize = 4;
     // スコア
     this.score = 0;
@@ -85,8 +89,8 @@ class TetrisGame {
     //現在のテトリミノ
     this.cur_tet_idx = null;
     this.cur_tet = null;
-    
-    //次のテトリミノ  
+
+    //次のテトリミノ
     this.next_tet_idx = null;
     this.next_tet = null;
 
@@ -112,17 +116,17 @@ class TetrisGame {
   nextTetroDraw() {
     this.next.fillStyle = '#000';
     this.next.fillRect(0, 0, this.nextCanvasW, this.nextCanvasH);
-  
+
     const blockSize = this.blockSize;
     const tetTypes = this.tetTypes;
     const tetColors = this.tetColors;
     const next_tet = tetTypes[this.next_tet_idx];
-  
+
     for (let y = 0; y < this.tetSize; y++) {
       for (let x = 0; x < this.tetSize; x++) {
         if (next_tet[y][x]) {
-          const px = x * blockSize + 90; // X座標に90を加えて位置調整
-          const py = y * blockSize + 15; // Y座標に15を加えて位置調整
+          const px = x * blockSize + (this.nextCanvasSize - this.blockSize * this.tetSize) / 2;
+          const py = y * blockSize + (this.nextCanvasSize - this.blockSize * this.tetSize) / 2;
           const tet_idx = this.next_tet_idx;
           this.next.fillStyle = tetColors[tet_idx];
           this.next.fillRect(px, py, blockSize, blockSize);
@@ -132,8 +136,7 @@ class TetrisGame {
       }
     }
   }
-  
-  
+
   // スコアの加算と表示更新
   addScore(points) {
     console.log(points);
@@ -330,8 +333,8 @@ class TetrisGame {
       for (let x = 0; x < this.boardCol; x++) {
         this.board[y][x] = 0;
       }
-    } 
-   
+    }
+
     //次のテトリミノを表示
     this.next_tet_idx = this.randomIdx();
     this.next_tet = this.tetTypes[this.next_tet_idx];
@@ -342,9 +345,6 @@ class TetrisGame {
     this.timerId = setInterval(() => this.dropTet(), this.speed);
     this.draw();
 
-    
-    
-    
   }
 }
 
