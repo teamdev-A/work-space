@@ -62,7 +62,7 @@
   margin: 0 auto; /* コンテナを中央寄せ */
   padding: 20px;
 
-  
+
   background-color: #333; /* コンテナの背景色 */
 }
 
@@ -79,18 +79,13 @@
   height: 600px;
   width: 300px;
   background-color: #000;
+  margin-right: 40px;
 
-  
 }
 
 #next {
-    margin-left: 50px;
-    width: 200px;
-    height: 200px;
-    display: flex;
-    flex-wrap: wrap;
-  margin-right: 200px;
-
+  width: 150px;
+  height: 150px;
 }
 
 body {
