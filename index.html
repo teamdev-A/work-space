@@ -8,22 +8,59 @@
 <body>
   <div id="start-screen">
     <h1>Tetris</h1>
-    <div id="difficulty-selection">
-      <label for="difficulty">Select the difficulty:</label>
-      <select id="difficulty">
-          <option value="easy">Easy</option>
-          <option value="normal">Normal</option>
-          <option value="hard">Hard</option>
-      </select>
+    <div id="select-and-start-button">
+      <div id="difficulty-selection">
+        <label for="difficulty">Difficulty Level:</label>
+        <select id="difficulty">
+            <option value="easy">Easy</option>
+            <option value="normal">Normal</option>
+            <option value="hard">Hard</option>
+        </select>
+      </div>
+      <button id="start-button">Start Game</button>
     </div>
-    <button id="start-button">Start Game</button>
   </div>
   <div id="container">
+    <div id="board">
+      <div id="score-board">
+        <h2>Score</h2>
+        <h2 id="score">0</h2>
+      </div>
+      <div id="top-score-board">
+        <h2>Top Score</h2>
+        <h2 id="top-score">0</h2>
+      </div>
+    </div>
     <canvas id="cvs"></canvas>
     <canvas id="next"></canvas>
   </div>
+
+
+  <audio id="game-start">
+    <source src="sounds/game-start-6104.mp3" type="audio/mpeg">
+  </audio>
+
+  <audio id="put">
+    <source src="sounds/stick-hitting-a-dreadlock-small-thud-83297.mp3" type="audio/mpeg">
+  </audio>
+
+  <audio id="clear-line">
+    <source src="sounds/menu-change-89197.mp3" type="audio/mpeg">
+  </audio>
+
+  <audio id="game-over">
+    <source src="sounds/mission-success-41211.mp3" type="audio/mpeg">
+  </audio>
+
+  <script src="display-top-score.js"></script>
+
   <script src="tetoris-start.js"></script>
   <script src="tetoris-class.js"></script>
 </body>
 </html>
 
+<!-- やること -->
+<!--
+  スコアの表示を変える
+  difficultyの表示を変える
+-->
