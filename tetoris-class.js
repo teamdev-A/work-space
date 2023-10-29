@@ -1,4 +1,5 @@
 class TetrisGame {
+
   constructor(speed) {
     this.speed = speed;
     this.blockSize = 30;
@@ -12,7 +13,11 @@ class TetrisGame {
     cvs.height = this.canvasH;
     this.container = document.getElementById("container");
     this.container.style.width = this.canvasW + 'px';
+    this.nexttetromino = document.getElementById("next");
+    this.next = this.nexttetromino.getContext("2d");
     this.tetSize = 4;
+    this.nextCanvasW = this.blockSize * 20;
+    this.nextCanvasH = this.blockSize * 20;
 
     this.tetTypes = [
       [],
@@ -70,29 +75,67 @@ class TetrisGame {
       '#9693fe',
       '#f2b907',
     ];
+    //現在のテトリミノ
+    this.cur_tet_idx = null;
+    this.cur_tet = null;
+    
+    //次のテトリミノ  
+    this.next_tet_idx = null;
+    this.next_tet = null;
 
-    this.tet_idx = null;
-    this.tet = null;
     this.offsetX = 0;
     this.offsetY = 0;
     this.board = [];
     this.timerId = null;
     this.isGameOver = false;
-
     //初期化処理
     this.init();
   }
 
+  updateNextTet() {
+    this.cur_tet_idx = this.next_tet_idx;
+    this.cur_tet = this.next_tet;
+
+    this.next_tet_idx = this.randomIdx();
+    this.next_tet = this.tetTypes[this.next_tet_idx];
+    this.nextTetroDraw();
+  }
+
+  nextTetroDraw() {
+    this.next.fillStyle = '#000';
+    this.next.fillRect(0, 0, this.nextCanvasW, this.nextCanvasH);
+  
+    const blockSize = this.blockSize;
+    const tetTypes = this.tetTypes;
+    const tetColors = this.tetColors;
+    const next_tet = tetTypes[this.next_tet_idx];
+  
+    for (let y = 0; y < this.tetSize; y++) {
+      for (let x = 0; x < this.tetSize; x++) {
+        if (next_tet[y][x]) {
+          const px = x * blockSize + 90; // X座標に90を加えて位置調整
+          const py = y * blockSize + 15; // Y座標に15を加えて位置調整
+          const tet_idx = this.next_tet_idx;
+          this.next.fillStyle = tetColors[tet_idx];
+          this.next.fillRect(px, py, blockSize, blockSize);
+          this.next.strokeStyle = 'black';
+          this.next.strokeRect(px, py, blockSize, blockSize);
+        }
+      }
+    }
+  }
+  
+  
+
   draw() {
     this.ctx.fillStyle = '#000';
     this.ctx.fillRect(0, 0, this.canvasW, this.canvasH);
-
     for (let y = 0; y < this.boardRow; y++) {
       for (let x = 0; x < this.boardCol; x++) {
         if (this.board[y][x]) {
           this.drawBlock(x, y, this.board[y][x]);
         }
-      }
+     }
     }
 
     if (this.isGameOver) {
@@ -103,20 +146,23 @@ class TetrisGame {
       const y = this.canvasH / 2 - 20;
       this.ctx.fillStyle = 'white';
       this.ctx.fillText(s, x, y);
-	  document.getElementById("start-button").textContent = "Continue"; // ボタンのテキストを変更
-	  document.getElementById("start-screen").style.visibility = "visible"; // スタート画面を表示
+
+
+	    document.getElementById("start-button").textContent = "Continue"; // ボタンのテキストを変更
+	    document.getElementById("start-screen").style.visibility = "visible"; // スタート画面を表示
       this.init();
     }
 
-    //テトリミノの描画
+    //現在のテトリミノの描画
     for (let y = 0; y < this.tetSize; y++) {
       for (let x = 0; x < this.tetSize; x++) {
-        if (this.tet[y][x] == 1) {
-          this.drawBlock(this.offsetX + x, this.offsetY + y, this.tet_idx);
+        if (this.cur_tet[y][x]) {
+          this.drawBlock(this.offsetX + x, this.offsetY + y, this.cur_tet_idx);
         }
       }
     }
   };
+
 
   //  ブロック一つを描画する
   drawBlock(x, y, tet_idx) {
@@ -129,7 +175,7 @@ class TetrisGame {
     this.ctx.strokeRect(px, py, this.blockSize, this.blockSize);
   }
 
-  canMove(dx, dy, nowTet = this.tet) {
+  canMove(dx, dy, nowTet = this.cur_tet) {
     for (let y = 0; y < this.tetSize; y++) {
       for (let x = 0; x < this.tetSize; x++) {
         if (nowTet[y][x]) {
@@ -150,7 +196,7 @@ class TetrisGame {
     for (let y = 0; y < this.tetSize; y++) {
       newTet[y] = [];
       for (let x = 0; x < this.tetSize; x++) {
-        newTet[y][x] = this.tet[this.tetSize - 1 - x][y];
+        newTet[y][x] = this.cur_tet[this.tetSize - 1 - x][y];
       }
     }
     return newTet;
@@ -171,7 +217,7 @@ class TetrisGame {
       case 32:
         const newTet = this.createRotateTet();
         if (this.canMove(0, 0, newTet)) {
-          this.tet = newTet;
+          this.cur_tet = newTet;
         }
     }
     this.draw();
@@ -180,8 +226,8 @@ class TetrisGame {
   fixTet() {
     for (let y = 0; y < this.tetSize; y++) {
       for (let x = 0; x < this.tetSize; x++) {
-        if (this.tet[y][x]) {
-          this.board[this.offsetY + y][this.offsetX + x] = this.tet_idx;
+        if (this.cur_tet[y][x]) {
+          this.board[this.offsetY + y][this.offsetX + x] = this.cur_tet_idx;
         }
       }
     }
@@ -213,9 +259,10 @@ class TetrisGame {
     } else {
       this.fixTet();
       this.clearLine();
-      this.tet_idx = this.randomIdx();
-      this.tet = this.tetTypes[this.tet_idx];
+      this.cur_tet_idx = this.randomIdx();
+      this.cur_tet = this.tetTypes[this.cur_tet_idx];
       this.initStartPos();
+      this.updateNextTet();
       if (!this.canMove(0, 0)) {
         this.isGameOver = true;
         clearInterval(this.timerId);
@@ -238,13 +285,21 @@ class TetrisGame {
       for (let x = 0; x < this.boardCol; x++) {
         this.board[y][x] = 0;
       }
-    }
+    } 
+   
+    //次のテトリミノを表示
+    this.next_tet_idx = this.randomIdx();
+    this.next_tet = this.tetTypes[this.next_tet_idx];
+    //次のテトリスを描画する処理
+    this.updateNextTet();
 
-    this.tet_idx = this.randomIdx();
-    this.tet = this.tetTypes[this.tet_idx];
     this.initStartPos();
     this.timerId = setInterval(() => this.dropTet(), this.speed);
     this.draw();
+
+    
+    
+    
   }
 }
 
@@ -252,6 +307,7 @@ class TetrisGame {
 function GameStart(speed) {
   const game = new TetrisGame(speed);
   document.addEventListener('keydown', (e) => game.onKeyPress(e));
+  game.init();
 }
 
 

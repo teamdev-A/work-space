@@ -25,14 +25,25 @@
   max-width: 800px; /* コンテナの最大幅を指定 */
   margin: 0 auto; /* コンテナを中央寄せ */
   padding: 20px;
-  background-color: #333; /* コンテナの背景色 */
   text-align: center;
+  display: flex; /* Flexボックスを使用して要素を並べる */
+  align-items: center; /* 要素を垂直方向に中央揃え */
+  justify-content: center; /* 要素を水平方向に中央揃え */
 }
 
 #cvs {
   height: 600px;
   width: 300px;
   background-color: #000;
+  
+}
+
+#next {
+    margin-left: 50px;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 body {
@@ -52,6 +63,7 @@ h1 {
   text-shadow: 2px 2px 4px #000; /* テキストに影を付ける */
   margin: 10px; /* マージンを追加 */
 }
+
 
 
 
