@@ -8,11 +8,44 @@
   cursor: pointer; /* マウスカーソルをポインターに変更 */
   border-radius: 5px; /* ボタンの角を丸くする */
   transition: background-color 0.3s; /* ホバー時のアニメーション */
+  margin-left: 40px;
+}
+
+#start-button:hover {
+  background-color: #43A047;
+}
+
+#select-and-start-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 10px;
 }
 
 #difficulty-selection {
-  margin-bottom: 10px;
+  /* margin-right: 40px; */
+  font-size: large;
+}
+
+#difficulty {
+  font-size: 16px;
+  padding: 10px;
+  border: 2px solid #007BFF;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+#difficulty:hover {
+  border-color: #0056b3;
+}
+
+#difficulty:focus {
+  outline: none;
+  box-shadow: 0 0 10px #007BFF;
 }
 
 /* スタート画面のスタイル */
@@ -22,17 +55,29 @@
 
 /* ゲームコンテナのスタイル */
 #container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   max-width: 800px; /* コンテナの最大幅を指定 */
   margin: 0 auto; /* コンテナを中央寄せ */
   padding: 20px;
   background-color: #333; /* コンテナの背景色 */
+}
+
+#board {
   text-align: center;
+  margin-right: 80px;
+}
+
+#score-board {
+  margin-bottom: 40px;
 }
 
 #cvs {
   height: 600px;
   width: 300px;
   background-color: #000;
+  margin-right: 200px;
 }
 
 body {
@@ -53,6 +98,6 @@ h1 {
   margin: 10px; /* マージンを追加 */
 }
 
-
-
-
+.hidden {
+  display: none;
+}

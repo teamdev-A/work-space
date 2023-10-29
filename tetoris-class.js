@@ -10,9 +10,16 @@ class TetrisGame {
     this.canvasH = this.blockSize * this.boardRow;
     cvs.width = this.canvasW;
     cvs.height = this.canvasH;
-    this.container = document.getElementById("container");
-    this.container.style.width = this.canvasW + 'px';
     this.tetSize = 4;
+    // スコア
+    this.score = 0;
+    this.topScore = parseInt(localStorage.getItem('topScore') || '0');
+
+    this.scoreElement = document.getElementById('score');
+    this.topScoreElement = document.getElementById('top-score');
+
+    this.updateScoreDisplay();
+    this.updateTopScoreDisplay();
 
     this.tetTypes = [
       [],
@@ -83,6 +90,28 @@ class TetrisGame {
     this.init();
   }
 
+  // スコアの加算と表示更新
+  addScore(points) {
+    console.log(points);
+    this.score += points;
+    this.updateScoreDisplay();
+
+    if (this.score > this.topScore) {
+      this.topScore = this.score;
+      this.updateTopScoreDisplay();
+    }
+  }
+
+  // スコア表示の更新
+  updateScoreDisplay() {
+    this.scoreElement.textContent = this.score;
+  }
+
+  // トップスコア表示の更新
+  updateTopScoreDisplay() {
+    this.topScoreElement.textContent = this.topScore;
+  }
+
   draw() {
     this.ctx.fillStyle = '#000';
     this.ctx.fillRect(0, 0, this.canvasW, this.canvasH);
@@ -96,6 +125,8 @@ class TetrisGame {
     }
 
     if (this.isGameOver) {
+      document.getElementById('game-over').play();
+      let topScore = localStorage.getItem('topScore') || 0;
       const s = 'GAME OVER';
       this.ctx.font = "50px MS ゴシック";
       const w = this.ctx.measureText(s).width;
@@ -103,8 +134,14 @@ class TetrisGame {
       const y = this.canvasH / 2 - 20;
       this.ctx.fillStyle = 'white';
       this.ctx.fillText(s, x, y);
-	  document.getElementById("start-button").textContent = "Continue"; // ボタンのテキストを変更
-	  document.getElementById("start-screen").style.visibility = "visible"; // スタート画面を表示
+	    document.getElementById("start-button").textContent = "Continue"; // ボタンのテキストを変更
+	    document.getElementById("start-screen").style.visibility = "visible"; // スタート画面を表示
+
+      // 今までの記録より高いスコアはlocalStorageに記録
+      if (this.score > topScore) {
+        localStorage.setItem('topScore', this.score);
+      }
+
       this.init();
     }
 
@@ -187,7 +224,9 @@ class TetrisGame {
     }
   };
 
+  // ラインを消した時にスコアを計算する機能追加
   clearLine() {
+    let cleardLines = 0;
     for (let y = 0; y < this.boardRow; y++) {
       let isLineOK = true;
       for (let x = 0; x < this.boardCol; x++) {
@@ -197,12 +236,17 @@ class TetrisGame {
         }
       }
       if (isLineOK) {
+        cleardLines++;
         for (let ny = y; ny > 0; ny--) {
           for (let nx = 0; nx < this.boardCol; nx++) {
             this.board[ny][nx] = this.board[ny - 1][nx];
           }
         }
       }
+    }
+    if (cleardLines) {
+      document.getElementById('clear-line').play();
+      this.addScore(100 * cleardLines * cleardLines);
     }
   }
 
@@ -211,6 +255,7 @@ class TetrisGame {
     if (this.canMove(0, 1)) {
       this.offsetY++;
     } else {
+      document.getElementById('put').play();
       this.fixTet();
       this.clearLine();
       this.tet_idx = this.randomIdx();
@@ -252,6 +297,7 @@ class TetrisGame {
 function GameStart(speed) {
   const game = new TetrisGame(speed);
   document.addEventListener('keydown', (e) => game.onKeyPress(e));
+  document.getElementById('bgm').play();
 }
 
 
