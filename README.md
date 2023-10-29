@@ -1,11 +1,28 @@
-# テトリスの作成
+# Tetris developed by team
 
-## 手順
-1. 下記URLを使ってまず、基礎的なテトリスロジックを作成します。→```https://joytas.net/programming/tetris1```
 
-2. これができ次第スタート画面作成
+## DEMO
 
-3. 次にゲームオーバーになったらリトライ画面の表示→もう一度テトリスができるようにする。
 
-3. スタート画面で難易度をeasy→hardまで調整する
+## Tetris URL
+
+
+## Why Tetris?
+It was easy to come up with an extension for Tetris that would allow users to play it again, and the idea matched the technical capabilities of the team.
+
+ 
+ 
+## What did you have in mind?
+We developed this product keeping in mind what kind of technology we should incorporate in order to increase the number of repeat customers.
+
+
+ 
+## Note
+The compatible model is assumed to be a PC. Basic operations are performed using the cross key, and rotation is performed using the space key.
+ 
+## Author
+
+ 
+* creators kanata99 sakitaro isk221492
+* belongs RecursionCS
 
