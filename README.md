@@ -23,6 +23,8 @@ https://teamdev-a.github.io/work-space/
 
 
 ## 機能要件
+
+### スタートページ
 <img width="1128" alt="スクリーンショット 2023-10-29 195337" src="https://github.com/teamdev-A/work-space/assets/112442087/394a7013-2145-41e6-bd0e-1b0bb4cffc1f">
 
 | 機能 | 内容 |
@@ -31,7 +33,7 @@ https://teamdev-a.github.io/work-space/
 | Start Game | 選んだレベルのゲームがスタートします。 |
 
 
-
+### ゲームページ
 <img width="1128" alt="スクリーンショット 2023-10-29 195356" src="https://github.com/teamdev-A/work-space/assets/112442087/37479cd2-b543-4718-8873-0a0428dc2576">
 
 | 機能 | 内容 |
@@ -39,7 +41,7 @@ https://teamdev-a.github.io/work-space/
 | 現在のテトリミノ | テトリミノが落ちてきます。ブロックを完成させましょう ！|
 |  次のテトリミノ| 次に落ちるテトリミノが確認できます。備えましょう！ |
 
-
+### ゲーム終了ページ
 <img width="1128" alt="スクリーンショット 2023-10-29 195415" src="https://github.com/teamdev-A/work-space/assets/112442087/9d562c4d-2bc4-4609-8d73-4433e80d00c7">
 
 | 機能 | 内容 |
@@ -51,9 +53,13 @@ https://teamdev-a.github.io/work-space/
 
 ## 注意事項
 対応機種はPCを想定しております。 基本操作は十字キー、回転はスペースキーで行います。
- 
-## 著者
 
-* クリエーター kanata99 sakitaro isk221492
-* 所属 RecursionCS
+## 参考文献
+
+### 公式ドキュメント
+- [Bootstrap](https://getbootstrap.jp/)
+- 
+## 著者
+kanata99 sakitaro isk221492
+
 
