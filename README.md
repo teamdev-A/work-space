@@ -8,7 +8,9 @@
 https://teamdev-a.github.io/work-space/
 
 ## どうしてテトリスを選んだか？
-ビジネスにインパクトを与えることを考えたときテトリスは拡張機能でその部分をとらえやすく、チームの技術力と一致していました。
+もう一度クリックしてもらえる制作物をチームで作りたいと考えてチームの技術力を吟味した結果
+テトリスがマッチしていたためこの開発に挑みました。また、テトリスの開発に伴って基本的なGitの
+操作にも慣れるため積極的にmergeやpull requestを行っています。
  
  
 ## このテトリスの特徴は？
@@ -58,7 +60,6 @@ https://teamdev-a.github.io/work-space/
 
 ### 公式ドキュメント
 - [Bootstrap](https://getbootstrap.jp/)
-- 
 ## 著者
 kanata99 sakitaro isk221492
 
