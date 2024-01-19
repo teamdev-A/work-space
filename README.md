@@ -1,7 +1,8 @@
 # チーム開発によるテトリス
 
 ## 概要
-
+テトリスが遊べるアプリケーションを開発しました。
+このアプリケーションはJavaScriptのDOMを使っておりHTMLと連携して動的な操作を可能にしています。またDOM操作でゲーム音声の制御を行っておりユーザーエクスペリエンスが向上しゲームがより魅力的になっています。
 
 ## ゲームのデモ
 ![-GoogleChrome2024-01-1903-01-14-ezgif com-video-to-gif-converter](https://github.com/teamdev-A/work-space/assets/112442087/de9f00f0-cefb-4659-8bce-61c1b43cabec)
